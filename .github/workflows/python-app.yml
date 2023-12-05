@@ -14,7 +14,7 @@ permissions:
 
 jobs:
   build:
-    runs_on: 
+    runs-on: 
       group: elsevier-standard-runners
     steps:
     - uses: actions/checkout@v3
