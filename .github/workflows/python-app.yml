@@ -14,9 +14,8 @@ permissions:
 
 jobs:
   build:
-
-    runs-on: ubuntu-latest
-
+    runs_on: 
+      group: elsevier-standard-runners
     steps:
     - uses: actions/checkout@v3
     - name: Set up Python 3.10
