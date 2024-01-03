@@ -30,10 +30,6 @@ app.layout = html.Div([
     html.H1('Xfire Fabrication Time Analyse'),
     html.Div(children=[
         html.Div(children=[
-            html.Button("Update Data Files", id="btn-fetch-data"),
-            html.Label(f'   Last Update was {jobs[0]}'),
-        ], style={ 'flex': 1}),
-        html.Div(children=[
             html.Button("Download Jenkins Jobs Data csv", id="btn-download-jenkins-jobs-data"),
             dcc.Download(id="download-jenkins-jobs-data"),
         ], style={'flex': 1}),
@@ -41,13 +37,17 @@ app.layout = html.Div([
             html.Button("Download Jobs Details csv", id="btn-download-job-details-data"),
             dcc.Download(id="download-job-details-data"),
         ], style={ 'flex': 1}),
+        html.Div(children=[
+            html.Button("Update Data Files", id="btn-fetch-data"),
+            html.Label(f"   Last Update: {jobs[0]} and {batchs[0]}"),
+        ], style={ 'flex': 2, }),
     ], style={'padding': 10, 'display': 'flex', 'flexDirection': 'row'}),
     
     html.Br(),   html.Br(),
     html.Div(children=[
         html.Div(children=[
         html.Label('Jenkins Logs for \"start db fabrication\" Analyse'),
-        dcc.Dropdown(id="job_log", options=jobs_options, value=jobs[-1]),
+        dcc.Dropdown(id="job_log", options=jobs_options, value=jobs[-3]),
         html.Label('Jobs Relationship'),
         html.Div(children=[
             html.Div(children=[
@@ -177,7 +177,7 @@ def update_chart(steps_name):
     if steps_name is None:
         raise PreventUpdate
     data = df_xfire.query('name in @steps_name')
-    print(data)
+    #print(data)
     fig = px.line(data, x='start_time', y='duration', color='name', hover_data='duration_string')
     fig.update(layout=dict(title=dict(x=0.5)))
     return fig
