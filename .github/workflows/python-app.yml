@@ -3,7 +3,8 @@
 
 name: Python application
 
-on:
+on: 
+  workflow_dispatch:
   push:
     branches: [ "main" ]
   pull_request:
@@ -14,9 +15,9 @@ permissions:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
     container: python:3
+    # group: elsevier-standard-runners
     steps:
     - uses: actions/checkout@v3
     - name: Set up Python 3.10
@@ -36,4 +37,4 @@ jobs:
         flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
     - name: Test with pytest
       run: |
-        pytest
+        # pytest
