@@ -43,7 +43,7 @@ jobs:
           $GITHUB_WORKSPACE/.github/scripts/build.sh
 
       - name: Upload Artifact to s3
-        working-directory: ${{ env.applicationfolder }}/target
+        working-directory: ${{ env.applicationfolder }}
         run: aws s3 cp *.zip s3://${{ env.S3BUCKET }}/
         
   deploy:
