@@ -6,7 +6,7 @@ on:
 env:
   applicationfolder: crossfire-fabrication-process-analyzer
   AWS_REGION: us-east-1
-  S3BUCKET: codedeploystack-webappdeploymentbucket-zdq0eepcojbk
+  S3BUCKET: xfirefabanalyzerstack-webappdeploymentbucket-4hzzfft9vosf
 
 
 jobs:
