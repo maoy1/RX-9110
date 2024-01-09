@@ -37,7 +37,10 @@ jobs:
       - name: Build and Package Maven
         id: package
         working-directory: ${{ env.applicationfolder }}
-        run: $GITHUB_WORKSPACE/.github/scripts/build.sh
+        run: |
+          ls
+          echo $GITHUB_WORKSPACE $GITHUB_WORKSPACE
+          $GITHUB_WORKSPACE/.github/scripts/build.sh
 
       - name: Upload Artifact to s3
         working-directory: ${{ env.applicationfolder }}/target
@@ -46,6 +49,7 @@ jobs:
   deploy:
     needs: build
     runs-on: ubuntu-latest
+    container: python:3
     environment: Dev
     permissions:
       id-token: write
@@ -57,6 +61,15 @@ jobs:
         role-to-assume: ${{ secrets.IAMROLE_GITHUB }}
         role-session-name: GitHub-Action-Role
         aws-region: ${{ env.AWS_REGION }}
+    - name: Set up Python 3.10
+      uses: actions/setup-python@v3
+      with:
+        python-version: "3.10"
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install flake8 pytest
+        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
     - run: |
         echo "Deploying branch ${{ env.GITHUB_REF }} to ${{ github.event.inputs.environment }}"
         commit_hash=`git rev-parse HEAD`
