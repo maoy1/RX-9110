@@ -44,7 +44,6 @@ jobs:
   deploy:
     needs: build
     runs-on: ubuntu-latest
-    container: python:3
     environment: Dev
     permissions:
       id-token: write
@@ -62,6 +61,7 @@ jobs:
         python-version: "3.10"
     - name: Install dependencies
       run: |
+        python --version
         python -m pip install --upgrade pip
         pip install flake8 pytest
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
