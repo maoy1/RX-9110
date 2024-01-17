@@ -1,5 +1,7 @@
 #!/bin/bash
 set -x
+echo "validate-service.sh"
+
 
 NUMBER_OF_ATTEMPTS=10
 SLEEP_TIME=3

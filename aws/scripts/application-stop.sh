@@ -1,5 +1,6 @@
 #!/bin/bash
 set -x
+echo "application-stop.sh"
 
 # System control will return either "active" or "inactive".
 tomcat_running=$(systemctl is-active tomcat)

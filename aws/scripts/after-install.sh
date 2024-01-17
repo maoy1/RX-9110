@@ -1,6 +1,6 @@
 #!/bin/bash
 set -xe
-
+echo "after-install.sh"
 
 # Copy war file from S3 bucket to tomcat webapp folder
 aws s3 cp s3://xfirefabanalyzerstack-webappdeploymentbucket-4hzzfft9vosf/xfire_fabrication_analyzer.zip /usr/local/xfire_fabrication_analyzer.zip
