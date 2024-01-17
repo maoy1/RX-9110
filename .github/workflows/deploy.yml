@@ -40,7 +40,10 @@ jobs:
       - name: Upload Artifact to s3
         working-directory: ${{ env.applicationfolder }}
         run: aws s3 cp *.zip s3://${{ env.S3BUCKET }}/
-        
+      - name: Overwrite Markdown
+        run: |
+          echo "### Hello world! :rocket:" >> $GITHUB_STEP_SUMMARY
+          
   deploy:
     needs: build
     runs-on: ubuntu-latest
@@ -65,10 +68,15 @@ jobs:
         python -m pip install --upgrade pip
         pip install flake8 pytest
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
-    - run: |
+    - name: Install dependencies
+      run: |
         echo "Deploying branch ${{ env.GITHUB_REF }} to ${{ github.event.inputs.environment }}"
         pwd
         ls
+        ls /usr/local/xfire_fabrication_analyzer.zip
         commit_hash=`git rev-parse HEAD`
         echo $commit_hash
         aws deploy create-deployment --application-name CodeDeployAppNameWithASG --deployment-group-name CodeDeployGroupName --github-location repository=$GITHUB_REPOSITORY,commitId=$commit_hash --ignore-application-stop-failures
+    - name: Overwrite Markdown
+      run: |
+        echo "### Hello world! :rocket:" >> $GITHUB_STEP_SUMMARY
