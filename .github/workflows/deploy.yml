@@ -39,7 +39,7 @@ jobs:
 
       - name: Upload Artifact to s3
         working-directory: ${{ env.applicationfolder }}
-        run: aws s3 cp *.zip s3://${{ env.S3BUCKET }}/
+        run: aws s3 cp ../*.zip s3://${{ env.S3BUCKET }}/
       - name: Overwrite Markdown
         run: |
           echo "### Hello world! :rocket:" >> $GITHUB_STEP_SUMMARY
@@ -58,17 +58,6 @@ jobs:
         role-to-assume: ${{ secrets.IAMROLE_GITHUB }}
         role-session-name: GitHub-Action-Role
         aws-region: ${{ env.AWS_REGION }}
-    - name: Set up Python 3.10
-      uses: actions/setup-python@v3
-      with:
-        python-version: "3.10"
-    - name: Install dependencies
-      run: |
-        python --version
-        python -m pip install --upgrade pip
-        pip install flake8 pytest
-        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
-    - name: Install dependencies
       run: |
         echo "Deploying branch ${{ env.GITHUB_REF }} to ${{ github.event.inputs.environment }}"
         pwd
