@@ -5,6 +5,7 @@ set -xe
 #mvn -Dmaven.test.skip=true clean install
 pwd
 ls
+cd ..
 zip -r xfire_fabrication_analyzer.zip requirements.txt  xfire-fabrication-process-analyzer aws
 
 
