@@ -75,6 +75,7 @@ jobs:
         ls
         commit_hash=`git rev-parse HEAD`
         echo $commit_hash
+        echo "aws deploy create-deployment --application-name CodeDeployAppNameWithASG --deployment-group-name CodeDeployGroupName --github-location repository=$GITHUB_REPOSITORY,commitId=$commit_hash --ignore-application-stop-failures"
         aws deploy create-deployment --application-name CodeDeployAppNameWithASG --deployment-group-name CodeDeployGroupName --github-location repository=$GITHUB_REPOSITORY,commitId=$commit_hash --ignore-application-stop-failures
     - name: Overwrite Markdown
       run: |
