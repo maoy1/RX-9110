@@ -3,7 +3,7 @@ os: linux
 files:
   - source: .
     destination: /usr/local/codedeployresources
-  - source: ./scripts/xfire-fab-analyser.service
+  - source: ./aws/scripts/xfire-fab-analyser.service
     destination: /etc/systemd/system/
 permissions:
   - object: [/usr/local/codedeployresources/aws/scripts/,/usr/local/codedeployresources/xfire-fabrication-process-analyzer]
