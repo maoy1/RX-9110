@@ -6,5 +6,8 @@ echo "application-start.sh"
 #service tomcat start
 
 sudo systemctl daemon-reload
+sleep 60
 sudo systemctl start xfire-fab-analyser
+sleep 60
 sudo systemctl status xfire-fab-analyser
+sleep 60
