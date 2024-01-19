@@ -4,8 +4,9 @@ echo "validate-service.sh"
 
 
 NUMBER_OF_ATTEMPTS=3
-SLEEP_TIME=3
+SLEEP_TIME=3000
 
+ls -l /usr/local/codedeployresources
 ps -ef | grep py
 
 
