@@ -9,12 +9,12 @@ import plotly.express as px
 
 
 # Use the output from the extract_start_db_jenkins_build_xml.py
-df_jobs = pd.read_csv('RX-9110/jenkins_jobs.csv')
+df_jobs = pd.read_csv('data/jenkins_jobs.csv')
 jobs = df_jobs['batch'].sort_values(ascending=False).unique()
 jobs_options = [{"label": value, "value": value} for value in jobs]
 
 # use the output from the extract_xfire_log.py
-df_xfire = pd.read_csv('RX-9110/job_details.csv')
+df_xfire = pd.read_csv('data/job_details.csv')
 batchs = df_xfire['batch'].sort_values(ascending=False).unique()
 batch_options = [{"label": value, "value": value} for value in batchs]
 

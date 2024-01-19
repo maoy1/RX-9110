@@ -4,6 +4,7 @@ After=multi-user.target
 [Service]
 Type=simple
 Restart=always
-ExecStart=/usr/bin/python3 /usr/local/codedeployresources/xfire-fabrication-process-analyzer/xfire_fabrication_dashboard.py
+WorkingDirectory=/usr/local/codedeployresources/
+ExecStart=/usr/bin/python3 ./xfire-fabrication-process-analyzer/xfire_fabrication_dashboard.py
 [Install]
 WantedBy=multi-user.target
