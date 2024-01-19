@@ -3,8 +3,12 @@ set -x
 echo "validate-service.sh"
 
 
-NUMBER_OF_ATTEMPTS=10
+NUMBER_OF_ATTEMPTS=3
 SLEEP_TIME=3
+
+ps -ef | grep py
+
+
 
 # Ensure Tomcat is running by making an HTTPS GET request to the default page.
 # Don't try and verify the certificate; use the --insecure flag.
