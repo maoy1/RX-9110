@@ -201,4 +201,4 @@ def func(n_clicks):
     return dcc.send_data_frame(df_xfire.to_csv, "job_details.csv")
 
 if __name__ == "__main__":
-    app.run_server(debug=True)
+    app.run_server(debug=True, port="8080")
