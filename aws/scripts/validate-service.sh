@@ -3,8 +3,8 @@ set -x
 echo "validate-service.sh"
 
 
-NUMBER_OF_ATTEMPTS=3
-SLEEP_TIME=3000
+NUMBER_OF_ATTEMPTS=30
+SLEEP_TIME=30
 
 ls -l /usr/local/codedeployresources
 ps -ef | grep py
