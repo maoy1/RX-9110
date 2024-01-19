@@ -8,8 +8,8 @@ SLEEP_TIME=30
 
 ls -l /usr/local/codedeployresources
 ps -ef | grep py
-
-
+sudo systemctl start xfire-fab-analyser
+systemctl status xfire-fab-analyser
 
 # Ensure Tomcat is running by making an HTTPS GET request to the default page.
 # Don't try and verify the certificate; use the --insecure flag.
