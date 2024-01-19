@@ -7,4 +7,4 @@ aws s3 cp s3://xfirefabanalyzerstack-webappdeploymentbucket-4hzzfft9vosf/xfire_f
 unzip /usr/local/xfire_fabrication_analyzer.zip -d /usr/local/xfire_fabrication_analyzer
 
 # Ensure the ownership permissions are correct.
-chown -R ec2-user:-user /usr/local/xfire_fabrication_analyzer
+chown -R ec2-user:ec2-user /usr/local/xfire_fabrication_analyzer
