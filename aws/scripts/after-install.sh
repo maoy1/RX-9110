@@ -12,4 +12,3 @@ pip3 install -r /usr/local/codedeployresources/xfire-fabrication-process-analyze
 
 ls -l /usr/local/codedeployresources
 
-exit 1
