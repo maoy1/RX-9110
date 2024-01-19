@@ -3,8 +3,8 @@ set -x
 echo "validate-service.sh"
 
 
-NUMBER_OF_ATTEMPTS=30
-SLEEP_TIME=30
+NUMBER_OF_ATTEMPTS=10
+SLEEP_TIME=3
 
 ls -l /usr/local/codedeployresources
 ps -ef | grep py
@@ -18,7 +18,7 @@ do
   HTTP_CODE=`curl --insecure --write-out '%{http_code}' -o /dev/null -m 10 -q -s http://localhost:8080`
   if [ "$HTTP_CODE" == "200" ]; then
     echo "app server is running."
-    exit 1
+    exit 0
   fi
   echo "Attempt to curl endpoint returned HTTP Code $HTTP_CODE. Backing off and retrying."
   sleep $SLEEP_TIME
