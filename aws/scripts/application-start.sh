@@ -9,3 +9,4 @@ sudo systemctl daemon-reload
 sudo systemctl start xfire-fab-analyser
 sudo systemctl status xfire-fab-analyser
 
+exit 1
