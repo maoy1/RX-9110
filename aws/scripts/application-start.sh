@@ -6,5 +6,5 @@ echo "application-start.sh"
 #service tomcat start
 pwd
 ls
-nohup python xfire-fabrication-process-analyzer/xfire_fabrication_dashboard.py &
+nohup python /usr/local/codedeployresources/xfire_fabrication_dashboard.py &
 exit 1
