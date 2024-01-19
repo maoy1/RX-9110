@@ -8,4 +8,8 @@ unzip /usr/local/xfire_fabrication_analyzer.zip -d /usr/local/codedeployresource
 # Ensure the ownership permissions are correct.
 chown -R ec2-user:ec2-user /usr/local/codedeployresources
 
+pip install -r /usr/local/codedeployresources/xfire-fabrication-process-analyzer/requirements.txt
+
 ls -l /usr/local/codedeployresources
+
+exit 1
