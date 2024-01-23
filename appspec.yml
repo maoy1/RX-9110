@@ -2,34 +2,48 @@ version: 0.0
 os: linux
 files:
   - source: .
-    destination: /usr/local/codedeployresources
-  - source: ./aws/scripts/xfire-fab-analyser.service
+    destination: /home/ec2-user/
+  - source: ./scripts/dash.service
     destination: /etc/systemd/system/
 permissions:
-  - object: [/usr/local/codedeployresources/aws/scripts/,/usr/local/codedeployresources/xfire-fabrication-process-analyzer]
+  - object: /home/ec2-user/scripts/before-install.sh
     owner: root
     mode: 755
     type:
       - file
-      - directory
+  - object: /home/ec2-user/scripts/after-install.sh
+    owner: root
+    mode: 755
+    type:
+      - file
+  - object: /home/ec2-user/scripts/start_dash.sh
+    owner: root
+    mode: 755
+    type:
+      - file
+  - object: /home/ec2-user/scripts/stop_dash.sh
+    owner: root
+    mode: 755
+    type:
+      - file
+  - object: /home/ec2-user/scripts/prepare_data.sh
+    owner: root
+    mode: 755
+    type:
+      - file
 hooks:
-  ApplicationStop:
-    - location: aws/scripts/application-stop.sh
-      timeout: 300
-      runas: root
   BeforeInstall:
-    - location: aws/scripts/before-install.sh
-      timeout: 300
+    - location: scripts/before-install.sh
       runas: root
   AfterInstall:
-    - location: aws/scripts/after-install.sh
-      timeout: 300
+    - location: scripts/after-install.sh
       runas: root
   ApplicationStart:
-    - location: aws/scripts/application-start.sh
+    - location: scripts/start_dash.sh
       timeout: 300
       runas: root
-  ValidateService:
-    - location: aws/scripts/validate-service.sh
+  ApplicationStop:
+    - location: scripts/stop_dash.sh
       timeout: 300
       runas: root
+

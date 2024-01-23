@@ -1,0 +1,10 @@
+[Unit]
+Description=Xfire Fabrication Performance Analyzer Dash
+After=multi-user.target
+[Service]
+Type=simple
+Restart=always
+WorkingDirectory=/home/ec2-user/
+ExecStart=/usr/bin/python3 /home/ec2-user/dash_app/app.py --JenkinsJobs /home/ec2-user/data/jenkins_jobs.csv  --JobDetails /home/ec2-user/data/job_details.csv
+[Install]
+WantedBy=multi-user.target
