@@ -32,7 +32,7 @@ STEP_OPTIONS = []
 BATCHES = []
 JOBS = []
 
-APP_VERSION = "0.1.0"
+APP_VERSION = "0.1.1"
 
 def update_data_func(job_file, detail_file):
     # download, extract data
@@ -67,9 +67,19 @@ app.layout = html.Div(
         dcc.Store(id="memory-output-all-details"),
         dcc.Store(id="memory-output-details"),
         # html.Div(children=[
-        html.H1(f"Xfire Fabrication Time Analyse, Version {APP_VERSION}"),
+        html.H1("Xfire Fabrication Time Analyse"),
+        html.H4(f"Version {APP_VERSION}"),
         html.Div(
             children=[
+                html.Div(
+                    children=[
+                        html.Button("Load/Update Data Files", id="btn-fetch-data", n_clicks=0,),
+                        html.Label(f"   Last Update: {JOBS[0]} and {BATCHES[0]}"),
+                    ],
+                    style={
+                        "flex": 2,
+                    },
+                ),
                 html.Div(
                     children=[
                         html.Button(
@@ -91,15 +101,6 @@ app.layout = html.Div(
                         dcc.Download(id="download-job-details-data"),
                     ],
                     style={"flex": 1},
-                ),
-                html.Div(
-                    children=[
-                        html.Button("Update Data Files", id="btn-fetch-data", n_clicks=0,),
-                        html.Label(f"   Last Update: {JOBS[0]} and {BATCHES[0]}"),
-                    ],
-                    style={
-                        "flex": 2,
-                    },
                 ),
             ],
             style={"padding": 10, "display": "flex", "flexDirection": "row"},
@@ -421,4 +422,4 @@ def update_step_trend(steps_name, data_dict):
 if __name__ == "__main__":
     # update_data(job_file, detail_file)
 
-    app.run_server(debug=False, host="0.0.0.0", port="8080")
+    app.run_server(debug=True, host="0.0.0.0", port="8080")
