@@ -32,6 +32,7 @@ STEP_OPTIONS = []
 BATCHES = []
 JOBS = []
 
+APP_VERSION = "0.1.0"
 
 def update_data_func(job_file, detail_file):
     # download, extract data
@@ -66,7 +67,7 @@ app.layout = html.Div(
         dcc.Store(id="memory-output-all-details"),
         dcc.Store(id="memory-output-details"),
         # html.Div(children=[
-        html.H1("Xfire Fabrication Time Analyse"),
+        html.H1(f"Xfire Fabrication Time Analyse, Version {APP_VERSION}"),
         html.Div(
             children=[
                 html.Div(
